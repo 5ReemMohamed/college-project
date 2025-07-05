@@ -4,7 +4,20 @@
   window.addEventListener('load', function () {
     window.scrollTo(0, 0);
   }); 
-  
+   const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth < 992) { // lg breakpoint
+          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+        }
+      });
+    });
+    
  function formatNumber(num) {
     return num.toLocaleString() + '+';
   }
