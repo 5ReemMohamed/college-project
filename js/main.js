@@ -4,6 +4,13 @@
   window.addEventListener('load', function () {
     window.scrollTo(0, 0);
   }); 
+   const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
    const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
     const navbarCollapse = document.querySelector('.navbar-collapse');
 
@@ -19,26 +26,50 @@
     });
     
  function formatNumber(num) {
-    return num.toLocaleString() + '+';
-  }
+  return num.toLocaleString() + '+';
+}
 
+function animateCounters() {
   const counters = document.querySelectorAll('.counter');
   counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+
     const updateCount = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText.replace(/[+,]/g, '');
+      const current = +counter.innerText.replace(/[+,]/g, '');
       const increment = target / 100;
 
-      if (count < target) {
-        const newCount = Math.ceil(count + increment);
+      if (current < target) {
+        const newCount = Math.ceil(current + increment);
         counter.innerText = formatNumber(newCount);
         setTimeout(updateCount, 20);
       } else {
         counter.innerText = formatNumber(target);
       }
     };
+
+    // Reset counter before animating
+    counter.innerText = '0+';
     updateCount();
   });
+}
+
+// Use Intersection Observer
+const section = document.querySelector('.achievement-section'); // replace with your section's ID or class
+let observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+    }
+  });
+}, {
+  threshold: 0.5 // Adjust visibility threshold if needed
+});
+
+if (section) {
+  observer.observe(section);
+}
+
 
   AOS.init({
     offset: 120,
