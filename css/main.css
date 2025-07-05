@@ -12,7 +12,7 @@ html{
   font-size: 2rem;
   font-weight: bold;
   padding: 0.5rem 1rem;
-  font-style:italic;
+  font-style:italic !important;
 }
 
 
@@ -121,6 +121,9 @@ header {
   .carousel-caption p {
     font-size: 1.2rem;
   }
+  .service h3{
+  font-size: 1.2rem !important;
+}
 }
 .carousel-caption .btn {
   color: #fff;
@@ -299,6 +302,7 @@ border: 1px solid #ebb912;
 }
 .service h3{
   color: #193750;
+  font-size: 1rem !important;
 }
 .service:hover{
   transform: translateY(-10px);
@@ -475,6 +479,7 @@ border: 1px solid #b69a41;
   padding-top: 3rem;
   border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #b89d448b;
 }
 
 .quote-icon-alt {
