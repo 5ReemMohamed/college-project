@@ -1,6 +1,6 @@
  document.addEventListener('DOMContentLoaded', function () {
   'use strict';
- // Simulated certificate data
+
 const certificates = {
   "reem mohamed": "../images//team1.jpg",
   "12345": "../images//team2.jpg",

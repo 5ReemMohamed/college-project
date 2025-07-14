@@ -16,7 +16,7 @@
 
     navLinks.forEach(function (link) {
       link.addEventListener('click', function () {
-        if (window.innerWidth < 992) { // lg breakpoint
+        if (window.innerWidth < 992) { 
           const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
           if (bsCollapse) {
             bsCollapse.hide();
@@ -54,8 +54,8 @@ function animateCounters() {
   });
 }
 
-// Use Intersection Observer
-const section = document.querySelector('.achievement-section'); // replace with your section's ID or class
+
+const section = document.querySelector('.achievement-section');
 let observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -63,7 +63,7 @@ let observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.5 // Adjust visibility threshold if needed
+  threshold: 0.5 
 });
 
 if (section) {
